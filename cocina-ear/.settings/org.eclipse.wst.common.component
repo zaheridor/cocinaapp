@@ -2,5 +2,11 @@
     <wb-module deploy-name="cocina-ear-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="cocinaapp.war" deploy-path="/" handle="module:/resource/cocina-web/cocina-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cocinaapp.jar" deploy-path="/" handle="module:/resource/cocina-ejb/cocina-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
