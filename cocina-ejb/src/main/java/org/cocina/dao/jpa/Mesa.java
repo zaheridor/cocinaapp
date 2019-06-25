@@ -67,4 +67,47 @@ public class Mesa implements Serializable {
 		this.facturas = facturas;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((facturas == null) ? 0 : facturas.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((numMaxComensales == null) ? 0 : numMaxComensales.hashCode());
+		result = prime * result + ((ubicacion == null) ? 0 : ubicacion.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mesa other = (Mesa) obj;
+		if (facturas == null) {
+			if (other.facturas != null)
+				return false;
+		} else if (!facturas.equals(other.facturas))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (numMaxComensales == null) {
+			if (other.numMaxComensales != null)
+				return false;
+		} else if (!numMaxComensales.equals(other.numMaxComensales))
+			return false;
+		if (ubicacion == null) {
+			if (other.ubicacion != null)
+				return false;
+		} else if (!ubicacion.equals(other.ubicacion))
+			return false;
+		return true;
+	}
+
 }

@@ -1,5 +1,7 @@
 package org.cocina.dto;
 
+import org.cocina.dao.jpa.Camarero;
+
 /**
  * Clase encargada de manejar la información de negocio de un camarero.
  * @author zaheridor
@@ -9,8 +11,8 @@ public class CamareroDTO {
 
 	private Integer id;
 	private String nombre;
-	private String apellido1;
-	private String apellido2;
+	private String primerApellido;
+	private String segundoApellido;
 	
 	public Integer getId() {
 		return id;
@@ -18,39 +20,37 @@ public class CamareroDTO {
 	public String getNombre() {
 		return nombre;
 	}
-	public String getApellido1() {
-		return apellido1;
+	public String getPrimerApellido() {
+		return primerApellido;
 	}
-	public String getApellido2() {
-		return apellido2;
+	public String getSegundoApellido() {
+		return segundoApellido;
 	}
 	
 	public static class Builder {
-		private Integer id;
-		private String nombre;
-		private String apellido1;
-		private String apellido2;
+
+		protected Camarero camarero = new Camarero();
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			camarero.setId(id);
 		}
 		
 		public Builder nombre(String nombre) {
-			this.nombre = nombre;
+			camarero.setNombre(nombre);
 			return this;
 		}
 		
-		public Builder apellido1(String apellido1) {
-			this.apellido1 = apellido1;
+		public Builder primerApellido(String primerApellido) {
+			camarero.setPrimerApellido(primerApellido);
 			return this;
 		}
 		
-		public Builder apellido2(String apellido2) {
-			this.apellido2 = apellido2;
+		public Builder segundoApellido(String segundoApellido) {
+			camarero.setSegundoApellido(segundoApellido);
 			return this;
 		}
 		
@@ -60,10 +60,10 @@ public class CamareroDTO {
 	}
 	
 	private CamareroDTO(Builder b) {
-		this.id = b.id;
-		this.nombre = b.nombre;
-		this.apellido1 = b.apellido1;
-		this.apellido2 = b.apellido2;
+		this.id = b.camarero.getId();
+		this.nombre = b.camarero.getNombre();
+		this.primerApellido = b.camarero.getPrimerApellido();
+		this.segundoApellido = b.camarero.getSegundoApellido();
 	}
 
 }

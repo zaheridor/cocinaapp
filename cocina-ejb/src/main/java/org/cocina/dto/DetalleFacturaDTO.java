@@ -2,6 +2,10 @@ package org.cocina.dto;
 
 import java.math.BigDecimal;
 
+import org.cocina.dao.jpa.Cocinero;
+import org.cocina.dao.jpa.DetalleFactura;
+import org.cocina.dao.jpa.Factura;
+
 /**
  * Clase encargada de manejar la información de negocio del detalle de factura.
  * @author zaheridor
@@ -33,37 +37,38 @@ public class DetalleFacturaDTO {
 	}
 	
 	public static class Builder {
-		private Integer id;
-		private Integer idFactura;
-		private Integer idCocinero;
-		private String plato;
-		private BigDecimal importe;
+		
+		protected DetalleFactura detalle = new DetalleFactura();
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			detalle.setId(id);
 		}
 		
 		public Builder factura(Integer idFactura) {
-			this.idFactura = idFactura;
+			Factura f = new Factura();
+			f.setId(idFactura);
+			detalle.setFactura(f);
 			return this;
 		}
 		
 		public Builder cocinero(Integer idCocinero) {
-			this.idCocinero = idCocinero;
+			Cocinero c = new Cocinero();
+			c.setId(idCocinero);
+			detalle.setCocinero(c);
 			return this;
 		}
 		
 		public Builder plato(String plato) {
-			this.plato = plato;
+			detalle.setPlato(plato);
 			return this;
 		}
 		
 		public Builder importe(BigDecimal importe) {
-			this.importe = importe;
+			detalle.setImporte(importe);
 			return this;
 		}
 		
@@ -73,10 +78,10 @@ public class DetalleFacturaDTO {
 	}
 	
 	private DetalleFacturaDTO(Builder b) {
-		this.id = b.id;
-		this.idFactura = b.idFactura;
-		this.idCocinero = b.idCocinero;
-		this.plato = b.plato;
-		this.importe = b.importe;
+		this.id = b.detalle.getId();
+		this.idFactura = b.detalle.getFactura().getId();
+		this.idCocinero = b.detalle.getCocinero().getId();
+		this.plato = b.detalle.getPlato();
+		this.importe = b.detalle.getImporte();
 	}
 }

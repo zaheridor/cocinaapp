@@ -1,5 +1,7 @@
 package org.cocina.dto;
 
+import org.cocina.dao.jpa.Cliente;
+
 /**
  * Clase encargada de manejar la información de negocio de un cliente.
  * @author zaheridor
@@ -10,8 +12,8 @@ public class ClienteDTO {
 
 	private Integer id;
 	private String nombre;
-	private String apellido1;
-	private String apellido2;
+	private String primerApellido;
+	private String segundoApellido;
 	private String observaciones;
 
 	public Integer getId() {
@@ -20,11 +22,11 @@ public class ClienteDTO {
 	public String getNombre() {
 		return nombre;
 	}
-	public String getApellido1() {
-		return apellido1;
+	public String getPrimerApellido() {
+		return primerApellido;
 	}
-	public String getApellido2() {
-		return apellido2;
+	public String getSegundoApellido() {
+		return segundoApellido;
 	}
 	public String getObservaciones() {
 		return observaciones;
@@ -32,37 +34,33 @@ public class ClienteDTO {
 	
 	public static class Builder {
 		
-		private Integer id;
-		private String nombre;
-		private String apellido1;
-		private String apellido2;
-		private String observaciones;
+		protected Cliente cliente = new Cliente();
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			cliente.setId(id);
 		}
 		
 		public Builder nombre(String nombre) {
-			this.nombre = nombre;
+			cliente.setNombre(nombre);
 			return this;
 		}
 		
-		public Builder apellido1(String apellido1) {
-			this.apellido1 = apellido1;
+		public Builder primerApellido(String primerApellido) {
+			cliente.setPrimerApellido(primerApellido);
 			return this;
 		}
 		
-		public Builder apellido2(String apellido2) {
-			this.apellido2 = apellido2;
+		public Builder segundoApellido(String segundoApellido) {
+			cliente.setSegundoApellido(segundoApellido);
 			return this;
 		}
 		
 		public Builder observaciones(String observaciones) {
-			this.observaciones = observaciones;
+			cliente.setObservaciones(observaciones);
 			return this;
 		}
 		
@@ -73,10 +71,10 @@ public class ClienteDTO {
 	}
 	
 	private ClienteDTO(Builder b) {
-		this.id = b.id;
-		this.nombre = b.nombre;
-		this.apellido1 = b.apellido1;
-		this.apellido2 = b.apellido2;
-		this.observaciones = b.observaciones;		
+		this.id = b.cliente.getId();
+		this.nombre = b.cliente.getNombre();
+		this.primerApellido = b.cliente.getPrimerApellido();
+		this.segundoApellido = b.cliente.getSegundoApellido();
+		this.observaciones = b.cliente.getObservaciones();
 	}
 }

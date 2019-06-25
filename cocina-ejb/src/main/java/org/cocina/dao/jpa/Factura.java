@@ -32,19 +32,29 @@ public class Factura implements Serializable {
 	private List<DetalleFactura> detalleFacturas;
 	
 	//bi-directional many-to-one association to Cliente
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="CLIENTE_ID")
 	private Cliente cliente;
 	
 	//bi-directional many-to-one association to Camarero
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="CAMARERO_ID")
 	private Camarero camarero;
 	
 	//bi-directional many-to-one association to Mesa
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="MESA_ID")
 	private Mesa mesa;
+	
+	public void addDetalleFactura(DetalleFactura detalle) {
+		detalleFacturas.add(detalle);
+		detalle.setFactura(this);
+	}
+	
+	public void removeDetalleFactura(DetalleFactura detalle) {
+		detalleFacturas.remove(detalle);
+		detalle.setFactura(null);
+	}
 
 	public Factura() {
 	}
@@ -95,6 +105,61 @@ public class Factura implements Serializable {
 
 	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
 		this.detalleFacturas = detalleFacturas;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((camarero == null) ? 0 : camarero.hashCode());
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+		result = prime * result + ((detalleFacturas == null) ? 0 : detalleFacturas.hashCode());
+		result = prime * result + ((fechaFactura == null) ? 0 : fechaFactura.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((mesa == null) ? 0 : mesa.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Factura other = (Factura) obj;
+		if (camarero == null) {
+			if (other.camarero != null)
+				return false;
+		} else if (!camarero.equals(other.camarero))
+			return false;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
+		if (detalleFacturas == null) {
+			if (other.detalleFacturas != null)
+				return false;
+		} else if (!detalleFacturas.equals(other.detalleFacturas))
+			return false;
+		if (fechaFactura == null) {
+			if (other.fechaFactura != null)
+				return false;
+		} else if (!fechaFactura.equals(other.fechaFactura))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (mesa == null) {
+			if (other.mesa != null)
+				return false;
+		} else if (!mesa.equals(other.mesa))
+			return false;
+		return true;
 	}
 
 }

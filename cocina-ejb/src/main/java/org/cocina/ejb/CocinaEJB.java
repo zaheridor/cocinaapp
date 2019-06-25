@@ -1,10 +1,5 @@
 package org.cocina.ejb;
 
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,7 +42,7 @@ public class CocinaEJB implements CocinaEJBRemote, CocinaEJBLocal {
 		try {
 			//factura
 			Factura factura = new Factura();
-			factura.setFechaFactura(Date.from(facturaDTO.getFechaFactura().atStartOfDay(ZoneId.systemDefault()).toInstant()));	//TODO: pasar a un util
+			factura.setFechaFactura(facturaDTO.getFechaFactura());
 			
 			Cliente cliente = new Cliente();
 			cliente.setId(facturaDTO.getIdCliente());
@@ -67,8 +62,8 @@ public class CocinaEJB implements CocinaEJBRemote, CocinaEJBLocal {
 			DetalleFactura detalleFactura;
 			Cocinero cocinero;
 			
-			if(facturaDTO.getDetalleDTO() != null) {
-				for(DetalleFacturaDTO detalle : facturaDTO.getDetalleDTO()) {
+			if(facturaDTO.getDetalleFacturas() != null) {
+				for(DetalleFacturaDTO detalle : facturaDTO.getDetalleFacturas()) {
 					cocinero = new Cocinero();
 					cocinero.setId(detalle.getIdCocinero());
 					

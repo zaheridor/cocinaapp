@@ -1,7 +1,12 @@
 package org.cocina.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+
+import org.cocina.dao.jpa.Camarero;
+import org.cocina.dao.jpa.Cliente;
+import org.cocina.dao.jpa.Factura;
+import org.cocina.dao.jpa.Mesa;
 
 /**
  * Clase encargada de manejar la información de negocio de factura.
@@ -14,8 +19,8 @@ public class FacturaDTO {
 	private Integer idCliente;
 	private Integer idCamarero;
 	private Integer idMesa;
-	private LocalDate fechaFactura;
-	private List<DetalleFacturaDTO> detalleDTO;
+	private Date fechaFactura;
+	private List<DetalleFacturaDTO> detalleFacturas;
 	
 	public Integer getId() {
 		return id;
@@ -29,52 +34,55 @@ public class FacturaDTO {
 	public Integer getIdMesa() {
 		return idMesa;
 	}
-	public LocalDate getFechaFactura() {
+	public Date getFechaFactura() {
 		return fechaFactura;
 	}
 	
-	public List<DetalleFacturaDTO> getDetalleDTO() {
-		return detalleDTO;
+	public List<DetalleFacturaDTO> getDetalleFacturas() {
+		return detalleFacturas;
 	}
-	
+
 	public static class Builder {
-		private Integer id;
-		private Integer idCliente;
-		private Integer idCamarero;
-		private Integer idMesa;
-		private LocalDate fechaFactura;
-		private List<DetalleFacturaDTO> detalleDTO;
+		
+		protected Factura factura = new Factura();
+		private List<DetalleFacturaDTO> detalleFacturas;
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			factura.setId(id);
 		}
 		
 		public Builder cliente(Integer idCliente) {
-			this.idCliente = idCliente;
+			Cliente c = new Cliente();
+			c.setId(idCliente);
+			factura.setCliente(c);
 			return this;
 		}
 		
 		public Builder camarero(Integer idCamarero) {
-			this.idCamarero = idCamarero;
+			Camarero c = new Camarero();
+			c.setId(idCamarero);
+			factura.setCamarero(c);
 			return this;
 		}
 		
 		public Builder mesa(Integer idMesa) {
-			this.idMesa = idMesa;
+			Mesa m = new Mesa();
+			m.setId(idMesa);
+			factura.setMesa(m);
 			return this;
 		}
 		
-		public Builder fechaFactura(LocalDate fechaFactura) {
-			this.fechaFactura = fechaFactura;
+		public Builder fechaFactura(Date fechaFactura) {
+			factura.setFechaFactura(fechaFactura);
 			return this;
 		}
 		
-		public Builder detalleFactura(List<DetalleFacturaDTO> detalleDTO) {
-			this.detalleDTO = detalleDTO;
+		public Builder detalleFacturas(List<DetalleFacturaDTO> detalleFacturas) {
+			this.detalleFacturas = detalleFacturas;
 			return this;
 		}
 		
@@ -84,11 +92,11 @@ public class FacturaDTO {
 	}
 	
 	private FacturaDTO(Builder b) {
-		this.id = b.id;
-		this.idCliente = b.idCliente;
-		this.idCamarero = b.idCamarero;
-		this.idMesa = b.idMesa;
-		this.fechaFactura = b.fechaFactura;
-		this.detalleDTO = b.detalleDTO;
+		this.id = b.factura.getId();
+		this.idCliente = b.factura.getCliente().getId();
+		this.idCamarero = b.factura.getCamarero().getId();
+		this.idMesa = b.factura.getMesa().getId();
+		this.fechaFactura = b.factura.getFechaFactura();
+		this.detalleFacturas = b.detalleFacturas;
 	}
 }

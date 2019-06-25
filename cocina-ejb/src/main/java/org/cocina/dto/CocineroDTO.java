@@ -1,5 +1,7 @@
 package org.cocina.dto;
 
+import org.cocina.dao.jpa.Cocinero;
+
 /**
  * Clase encargada de manejar la información de negocio de un cocinero.
  * @author zaheridor
@@ -10,8 +12,8 @@ public class CocineroDTO {
 
 	private Integer id;
 	private String nombre;
-	private String apellido1;
-	private String apellido2;
+	private String primerApellido;
+	private String segundoApellido;
 	
 	public Integer getId() {
 		return id;
@@ -19,39 +21,37 @@ public class CocineroDTO {
 	public String getNombre() {
 		return nombre;
 	}
-	public String getApellido1() {
-		return apellido1;
+	public String getPrimerApellido() {
+		return primerApellido;
 	}
-	public String getApellido2() {
-		return apellido2;
+	public String getSegundoApellido() {
+		return segundoApellido;
 	}
 	
 	public static class Builder {
-		private Integer id;
-		private String nombre;
-		private String apellido1;
-		private String apellido2;
+		
+		protected Cocinero cocinero = new Cocinero();
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			cocinero.setId(id);
 		}
 		
 		public Builder nombre(String nombre) {
-			this.nombre = nombre;
+			cocinero.setNombre(nombre);
 			return this;
 		}
 		
-		public Builder apellido1(String apellido1) {
-			this.apellido1 = apellido1;
+		public Builder primerApellido(String primerApellido) {
+			cocinero.setPrimerApellido(primerApellido);
 			return this;
 		}
 		
-		public Builder apellido2(String apellido2) {
-			this.apellido2 = apellido2;
+		public Builder segundoApellido(String segundoApellido) {
+			cocinero.setSegundoApellido(segundoApellido);
 			return this;
 		}
 		
@@ -61,9 +61,9 @@ public class CocineroDTO {
 	}
 	
 	private CocineroDTO(Builder b) {
-		this.id = b.id;
-		this.nombre = b.nombre;
-		this.apellido1 = b.apellido1;
-		this.apellido2 = b.apellido2;
+		this.id = b.cocinero.getId();
+		this.nombre = b.cocinero.getNombre();
+		this.primerApellido = b.cocinero.getPrimerApellido();
+		this.segundoApellido = b.cocinero.getSegundoApellido();
 	}
 }

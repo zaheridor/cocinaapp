@@ -1,5 +1,7 @@
 package org.cocina.dto;
 
+import org.cocina.dao.jpa.Mesa;
+
 /**
  * Clase encargada de manejar la información de negocio de una mesa atendida.
  * @author zaheridor
@@ -22,25 +24,24 @@ public class MesaDTO {
 	}
 	
 	public static class Builder {
-		private Integer id;
-		private Integer numMaxComensales;
-		private String ubicacion;
+		
+		protected Mesa mesa = new Mesa();
 		
 		public Builder() {
 			
 		}
 		
 		public Builder(Integer id) {
-			this.id = id;
+			mesa.setId(id);
 		}
 		
 		public Builder numMaxComensales(Integer numMaxComensales) {
-			this.numMaxComensales = numMaxComensales;
+			mesa.setNumMaxComensales(numMaxComensales);
 			return this;
 		}
 		
 		public Builder ubicacion(String ubicacion) {
-			this.ubicacion = ubicacion;
+			mesa.setUbicacion(ubicacion);
 			return this;
 		}
 		
@@ -50,8 +51,8 @@ public class MesaDTO {
 	}
 	
 	private MesaDTO(Builder b) {
-		this.id = b.id;
-		this.numMaxComensales = b.numMaxComensales;
-		this.ubicacion = b.ubicacion;
+		this.id = b.mesa.getId();
+		this.numMaxComensales = b.mesa.getNumMaxComensales();
+		this.ubicacion = b.mesa.getUbicacion();
 	}
 }
