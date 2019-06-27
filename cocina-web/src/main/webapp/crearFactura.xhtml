@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Crear Factura</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h2>Capture los datos de la factura:</h2>
+		<h:panelGrid columns="1">
+			<h:panelGrid id="maestro" columns="2">
+				<h:outputLabel for="uiCliente">Cliente:</h:outputLabel>
+				<h:selectOneMenu id="uiCliente" value="#{cocinaBean.factura.idCliente}">
+					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
+					<f:selectItems value="#{cocinaBean.clienteSet}" var="cliente" itemLabel="#{cliente.nombre} #{cliente.primerApellido}" itemValue="#{cliente.id}"></f:selectItems>
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="uiMesa">Mesa:</h:outputLabel>
+				<h:selectOneMenu id="uiMesa" value="#{cocinaBean.factura.idMesa}">
+					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
+					<f:selectItems value="#{cocinaBean.mesaSet}" var="menu" itemLabel="#{menu.ubicacion}" itemValue="#{menu.id}"></f:selectItems>
+				</h:selectOneMenu>
+	
+				<h:outputLabel for="uiCamarero">Camarero:</h:outputLabel>
+				<h:selectOneMenu id="uiCamarero" value="#{cocinaBean.factura.idCamarero}">
+					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
+					<f:selectItems value="#{cocinaBean.camareroSet}" var="camarero" itemLabel="#{camarero.nombre} #{camarero.primerApellido}" itemValue="#{camarero.id}"></f:selectItems>
+				</h:selectOneMenu>
+	       	</h:panelGrid>
+	       	<h:panelGrid id="detalle" columns="2">
+	       		<h:dataTable id="dtDetalle" rows="3" value="#{cocinaBean.detalleSet}" var="detalle">
+	       			<f:facet name="header">
+	       				<h:outputText value="Detalle de la factura"></h:outputText>
+	       			</f:facet>
+	       			<h:column>
+	       				<f:facet name="header">
+	       					<h:outputText value="Cocinero"></h:outputText>
+	       				</f:facet>
+	       				<h:outputLabel for="uiCocinero">Cocinero:</h:outputLabel>
+						<h:selectOneMenu id="uiCocinero" value="#{detalle.idCocinero}">
+							<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
+							<f:selectItems value="#{cocinaBean.cocineroSet}" var="cocinero" itemLabel="#{cocinero.nombre} #{cocinero.primerApellido}" itemValue="#{cocinero.id}"></f:selectItems>
+						</h:selectOneMenu>
+	       			</h:column>
+	       			<h:column>
+	       				<f:facet name="header">
+	       					<h:outputText value="Plato"></h:outputText>
+	       				</f:facet>
+	       				<h:outputLabel for="uiPlato">Plato:</h:outputLabel>
+	       				<h:inputText id="uiPlato" value="#{detalle.plato}"></h:inputText>
+       				</h:column>
+       				<h:column>
+	       				<f:facet name="header">
+	       					<h:outputText value="Valor"></h:outputText>
+	       				</f:facet>
+	       				<h:outputLabel for="uiValor">Valor:</h:outputLabel>
+	       				<h:inputText id="uiValor" value="#{detalle.importe}"></h:inputText>
+       				</h:column>
+	       		</h:dataTable>
+	       	</h:panelGrid>
+       	</h:panelGrid>
+       	<h:commandButton id="btnGuardar" value="Guardar Factura" action="#{cocinaBean.guardarFactura()}"/>
+       	<h:commandButton id="btnRegresar" value="Regresar" action="index"/>
+	</h:form>
+</h:body>
+</html>

@@ -1,5 +1,6 @@
 package org.cocina.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class FacturaDTO {
 	public static class Builder {
 		
 		protected Factura factura = new Factura();
-		private List<DetalleFacturaDTO> detalleFacturas;
+		private List<DetalleFacturaDTO> detalleFacturas = new ArrayList<>();
 		
 		public Builder() {
 			
@@ -81,8 +82,8 @@ public class FacturaDTO {
 			return this;
 		}
 		
-		public Builder detalleFacturas(List<DetalleFacturaDTO> detalleFacturas) {
-			this.detalleFacturas = detalleFacturas;
+		public Builder adicionarDetalle(DetalleFacturaDTO detalleFactura) {
+			this.detalleFacturas.add(detalleFactura);
 			return this;
 		}
 		
@@ -92,10 +93,19 @@ public class FacturaDTO {
 	}
 	
 	private FacturaDTO(Builder b) {
+		if(b.factura.getCliente() != null) {
+			this.idCliente = b.factura.getCliente().getId();
+		}
+		
+		if(b.factura.getCamarero() != null) {
+			this.idCamarero = b.factura.getCamarero().getId();
+		}
+		
+		if(b.factura.getMesa() != null) {
+			this.idMesa = b.factura.getMesa().getId();
+		}
+		
 		this.id = b.factura.getId();
-		this.idCliente = b.factura.getCliente().getId();
-		this.idCamarero = b.factura.getCamarero().getId();
-		this.idMesa = b.factura.getMesa().getId();
 		this.fechaFactura = b.factura.getFechaFactura();
 		this.detalleFacturas = b.detalleFacturas;
 	}

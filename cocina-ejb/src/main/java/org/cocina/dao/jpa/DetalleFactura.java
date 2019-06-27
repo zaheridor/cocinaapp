@@ -17,8 +17,8 @@ public class DetalleFactura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="DETALLE_FACTURA_ID_GENERATOR", sequenceName="DETALLE_FACTURA_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DETALLE_FACTURA_ID_GENERATOR")
+	@SequenceGenerator(name="DETFACTURA_ID_GENERATOR", sequenceName="DETFACTURA_ID_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DETFACTURA_ID_GENERATOR")
 	@Column(name="ID")
 	private Integer id;
 

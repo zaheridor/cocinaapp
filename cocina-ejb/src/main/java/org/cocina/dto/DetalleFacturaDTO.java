@@ -78,9 +78,15 @@ public class DetalleFacturaDTO {
 	}
 	
 	private DetalleFacturaDTO(Builder b) {
+		if(b.detalle.getFactura() != null) {
+			this.idFactura = b.detalle.getFactura().getId();
+		}
+		
+		if(b.detalle.getCocinero() != null) {
+			this.idCocinero = b.detalle.getCocinero().getId();
+		}
+
 		this.id = b.detalle.getId();
-		this.idFactura = b.detalle.getFactura().getId();
-		this.idCocinero = b.detalle.getCocinero().getId();
 		this.plato = b.detalle.getPlato();
 		this.importe = b.detalle.getImporte();
 	}
