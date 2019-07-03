@@ -1,8 +1,22 @@
 package org.cocina.dao.jpa;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.Entity;
+import javax.persistence.EntityResult;
+import javax.persistence.FieldResult;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.Table;
 
 
 /**
@@ -10,25 +24,38 @@ import java.util.List;
  * @author zaheridor
  *
  */
+@SqlResultSetMapping(name = "ResultadoFacturadoCamareroAlMes",
+				  	 entities = {
+				  			 @EntityResult(
+						  			entityClass = org.cocina.dao.jpa.Camarero.class,
+						  			fields = {
+										@FieldResult(name="id", column="id_camarero"),
+										@FieldResult(name="nombre", column="nombre"),
+										@FieldResult(name="primer_apellido", column="apellido")
+						  			}
+				  			)
+				  	},
+				  	columns = @ColumnResult(name="sumatoriaImporte", type = BigDecimal.class)
+)
 @Entity
-@Table(name="CAMARERO")
+@Table(name="camarero")
 @NamedQuery(name="Camarero.findAll", query="SELECT c FROM Camarero c")
 public class Camarero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CAMARERO_ID_GENERATOR", sequenceName="CAMARERO_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CAMARERO_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="camarero_id_generator", sequenceName="camarero_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="camarero_id_generator")
+	@Column(name="id")
 	private Integer id;
 
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	private String nombre;
 
-	@Column(name="PRIMER_APELLIDO")
+	@Column(name="primer_apellido")
 	private String primerApellido;
 
-	@Column(name="SEGUNDO_APELLIDO")
+	@Column(name="segundo_apellido")
 	private String segundoApellido;
 
 	//bi-directional many-to-one association to Factura
@@ -36,6 +63,12 @@ public class Camarero implements Serializable {
 	private List<Factura> facturas;
 
 	public Camarero() {
+	}
+	
+	public Camarero(Integer id, String nombre, String primerApellido) {
+		this.id = id;
+		this.nombre = nombre;
+		this.primerApellido = primerApellido;
 	}
 
 	public Integer getId() {

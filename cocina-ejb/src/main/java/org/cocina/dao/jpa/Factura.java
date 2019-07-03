@@ -12,19 +12,19 @@ import java.util.List;
  *
  */
 @Entity
-@Table(name="FACTURA")
+@Table(name="factura")
 @NamedQuery(name="Factura.findAll", query="SELECT f FROM Factura f")
 public class Factura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="FACTURA_ID_GENERATOR", sequenceName="FACTURA_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FACTURA_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="factura_id_generator", sequenceName="factura_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="factura_id_generator")
+	@Column(name="id")
 	private Integer id;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="FECHA_FACTURA")
+	@Column(name="fecha_factura")
 	private Date fechaFactura;
 
 	//bi-directional many-to-one association to DetalleFactura
@@ -33,17 +33,17 @@ public class Factura implements Serializable {
 	
 	//bi-directional many-to-one association to Cliente
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CLIENTE_ID")
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
 	//bi-directional many-to-one association to Camarero
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CAMARERO_ID")
+	@JoinColumn(name="camarero_id")
 	private Camarero camarero;
 	
 	//bi-directional many-to-one association to Mesa
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MESA_ID")
+	@JoinColumn(name="mesa_id")
 	private Mesa mesa;
 	
 	public void addDetalleFactura(DetalleFactura detalle) {

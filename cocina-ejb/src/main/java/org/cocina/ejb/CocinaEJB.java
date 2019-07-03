@@ -1,11 +1,18 @@
 package org.cocina.ejb;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TemporalType;
 
 import org.cocina.dao.jpa.Camarero;
 import org.cocina.dao.jpa.Cliente;
@@ -16,6 +23,7 @@ import org.cocina.dao.jpa.Mesa;
 import org.cocina.dto.CamareroDTO;
 import org.cocina.dto.ClienteDTO;
 import org.cocina.dto.CocineroDTO;
+import org.cocina.dto.ConsultaCamareroDTO;
 import org.cocina.dto.DetalleFacturaDTO;
 import org.cocina.dto.FacturaDTO;
 import org.cocina.dto.MesaDTO;
@@ -136,6 +144,34 @@ public class CocinaEJB implements CocinaEJBRemote, CocinaEJBLocal {
 		}
 		
 		return dtoSet;
+	}
+
+	@Override
+	public List<ConsultaCamareroDTO> consultaCamareroRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+		List<ConsultaCamareroDTO> lista = new ArrayList<>();
+		String mes = fechaInicial.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
+		
+		StringBuilder sqlString = new StringBuilder();
+		sqlString.append("select c.id id_camarero, c.nombre nombre, c.primer_apellido apellido, sum(d.importe) sumatoriaImporte ");
+		sqlString.append("from camarero c, factura f, detalle_factura d ");
+		sqlString.append("where f.id = d.factura_id and f.camarero_id = c.id and f.fecha_factura between ?1 and ?2 ");
+		sqlString.append("group by c.id, c.nombre, c.primer_apellido");
+
+		@SuppressWarnings("unchecked")
+		List<Object[]> resultado = em.createNativeQuery(sqlString.toString(), "ResultadoFacturadoCamareroAlMes")
+				.setParameter(1, Date.from(fechaInicial.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()), TemporalType.DATE)
+				.setParameter(2, Date.from(fechaFinal.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()), TemporalType.DATE)
+				.getResultList();
+		
+		if(resultado != null) {
+			for(Object[] o : resultado) {
+				Camarero c = (Camarero)o[0];
+				BigDecimal suma = (BigDecimal)o[1];
+				lista.add(new ConsultaCamareroDTO.Builder(c.getId()).nombre(c.getNombre()).apellido(c.getPrimerApellido()).mes(mes).sumatoriaImporte(suma).build());
+			}
+		}
+
+		return lista;
 	}
 
 }

@@ -10,7 +10,8 @@
     <h:body>
         <h:form>
 	        <h1>Bienvenido a la mejor cocina!</h1>
-        	<h:commandButton id="submit" value="Crear Factura" action="#{cocinaBean.irCrearFactura()}"/>
+        	<h:commandButton id="btnCreaFactura" value="Crear Factura" action="#{cocinaBean.irCrearFactura()}"/>
+        	<h:commandButton id="btnConsultaCamarero" value="Consulta facturación por camarero" action="#{cocinaBean.consultaCamarero()}"/>
         </h:form>
     </h:body>
 </html>

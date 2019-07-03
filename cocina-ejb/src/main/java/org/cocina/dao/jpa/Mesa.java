@@ -11,21 +11,21 @@ import java.util.List;
  *
  */
 @Entity
-@Table(name="MESA")
+@Table(name="mesa")
 @NamedQuery(name="Mesa.findAll", query="SELECT m FROM Mesa m")
 public class Mesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MESA_ID_GENERATOR", sequenceName="MESA_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MESA_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="mesa_id_generator", sequenceName="mesa_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="mesa_id_generator")
+	@Column(name="id")
 	private Integer id;
 
-	@Column(name="NUM_MAX_COMENSALES")
+	@Column(name="num_max_comensales")
 	private Integer numMaxComensales;
 
-	@Column(name="UBICACION")
+	@Column(name="ubicacion")
 	private String ubicacion;
 
 	//bi-directional many-to-one association to Factura

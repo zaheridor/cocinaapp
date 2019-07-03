@@ -19,27 +19,27 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="CLIENTE")
+@Table(name="cliente")
 @NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CLIENTE_ID_GENERATOR", sequenceName="CLIENTE_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CLIENTE_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="cliente_id_generator", sequenceName="cliente_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cliente_id_generator")
+	@Column(name="id")
 	private Integer id;
 
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	private String nombre;
 
-	@Column(name="OBSERVACIONES")
+	@Column(name="observaciones")
 	private String observaciones;
 
-	@Column(name="PRIMER_APELLIDO")
+	@Column(name="primer_apellido")
 	private String primerApellido;
 
-	@Column(name="SEGUNDO_APELLIDO")
+	@Column(name="segundo_apellido")
 	private String segundoApellido;
 
 	//bi-directional many-to-one association to Factura

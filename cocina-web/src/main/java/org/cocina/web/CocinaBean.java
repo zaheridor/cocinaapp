@@ -1,13 +1,16 @@
 package org.cocina.web;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.cocina.dto.CamareroDTO;
@@ -60,6 +63,16 @@ public class CocinaBean implements Serializable {
 	
 	public String irCrearFactura() {
 		return "crearFactura";
+	}
+	
+	public String consultaCamarero() {
+		LocalDate fechaInicial = LocalDate.now().withDayOfMonth(1);
+		LocalDate fechaFinal = LocalDate.now().withDayOfMonth(fechaInicial.lengthOfMonth());
+		
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		session.put("consultaCamarero", ejb.consultaCamareroRangoFechas(fechaInicial, fechaFinal));
+
+		return "consultaCamarero";
 	}
 	
 	public String guardarFactura() {

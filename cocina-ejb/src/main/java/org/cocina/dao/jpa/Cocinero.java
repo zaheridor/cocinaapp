@@ -11,24 +11,24 @@ import java.util.List;
  *
  */
 @Entity
-@Table(name="COCINERO")
+@Table(name="cocinero")
 @NamedQuery(name="Cocinero.findAll", query="SELECT c FROM Cocinero c")
 public class Cocinero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="COCINERO_ID_GENERATOR", sequenceName="COCINERO_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COCINERO_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="cocinero_id_generator", sequenceName="cocinero_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cocinero_id_generator")
+	@Column(name="id")
 	private Integer id;
 
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	private String nombre;
 
-	@Column(name="PRIMER_APELLIDO")
+	@Column(name="primer_apellido")
 	private String primerApellido;
 
-	@Column(name="SEGUNDO_APELLIDO")
+	@Column(name="segundo_apellido")
 	private String segundoApellido;
 
 	//bi-directional many-to-one association to DetalleFactura

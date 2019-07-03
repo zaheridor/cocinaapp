@@ -11,31 +11,31 @@ import java.math.BigDecimal;
  *
  */
 @Entity
-@Table(name="DETALLE_FACTURA")
+@Table(name="detalle_factura")
 @NamedQuery(name="DetalleFactura.findAll", query="SELECT d FROM DetalleFactura d")
 public class DetalleFactura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="DETFACTURA_ID_GENERATOR", sequenceName="DETFACTURA_ID_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DETFACTURA_ID_GENERATOR")
-	@Column(name="ID")
+	@SequenceGenerator(name="detfactura_id_generator", sequenceName="detfactura_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="detfactura_id_generator")
+	@Column(name="id")
 	private Integer id;
 
-	@Column(name="IMPORTE")
+	@Column(name="importe")
 	private BigDecimal importe;
 
-	@Column(name="PLATO")
+	@Column(name="plato")
 	private String plato;
 
 	//bi-directional many-to-one association to Factura
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="FACTURA_ID")
+	@JoinColumn(name="factura_id")
 	private Factura factura;
 	
 	//bi-directional many-to-one association to Cocinero
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="COCINERO_ID")
+	@JoinColumn(name="cocinero_id")
 	private Cocinero cocinero;
 
 	public Cocinero getCocinero() {
