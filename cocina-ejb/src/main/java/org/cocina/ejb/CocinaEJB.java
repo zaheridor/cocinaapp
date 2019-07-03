@@ -152,10 +152,15 @@ public class CocinaEJB implements CocinaEJBRemote, CocinaEJBLocal {
 		String mes = fechaInicial.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
 		
 		StringBuilder sqlString = new StringBuilder();
-		sqlString.append("select c.id id_camarero, c.nombre nombre, c.primer_apellido apellido, sum(d.importe) sumatoriaImporte ");
-		sqlString.append("from camarero c, factura f, detalle_factura d ");
-		sqlString.append("where f.id = d.factura_id and f.camarero_id = c.id and f.fecha_factura between ?1 and ?2 ");
-		sqlString.append("group by c.id, c.nombre, c.primer_apellido");
+		sqlString.append("select c.id id_camarero, c.nombre nombre, c.primer_apellido apellido, ");
+		sqlString.append("(select coalesce(sum(d.importe),0) ");
+		sqlString.append("from factura f, detalle_factura d ");
+		sqlString.append("where f.id = d.factura_id ");
+		sqlString.append("and f.camarero_id = c.id ");
+		sqlString.append("and f.fecha_factura between ?1 and ?2 ");
+		sqlString.append(") sumatoriaImporte ");
+		sqlString.append("from camarero c ");
+		sqlString.append("order by 4 desc ");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> resultado = em.createNativeQuery(sqlString.toString(), "ResultadoFacturadoCamareroAlMes")
