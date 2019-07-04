@@ -6,59 +6,74 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 	<h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="${request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css" />
 	<title>Crear Factura</title>
 </h:head>
 <h:body>
 	<h:form>
 		<h2>Capture los datos de la factura:</h2>
 		<h:panelGrid columns="1">
-			<h:panelGrid id="maestro" columns="2">
+			<h:panelGrid id="maestro" columns="3">
 				<h:outputLabel for="uiCliente">Cliente:</h:outputLabel>
-				<h:selectOneMenu id="uiCliente" value="#{cocinaBean.factura.idCliente}">
+				<h:selectOneMenu id="uiCliente" value="#{cocinaBean.factura.idCliente}" required="#{empty param['noValidar']}" requiredMessage="Por favor seleccione el cliente">
 					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
 					<f:selectItems value="#{cocinaBean.clienteSet}" var="cliente" itemLabel="#{cliente.nombre} #{cliente.primerApellido}" itemValue="#{cliente.id}"></f:selectItems>
 				</h:selectOneMenu>
+				<h:message for="uiCliente" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
 				
 				<h:outputLabel for="uiMesa">Mesa:</h:outputLabel>
-				<h:selectOneMenu id="uiMesa" value="#{cocinaBean.factura.idMesa}">
+				<h:selectOneMenu id="uiMesa" value="#{cocinaBean.factura.idMesa}" required="#{empty param['noValidar']}" requiredMessage="Por favor seleccione una mesa">
 					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
 					<f:selectItems value="#{cocinaBean.mesaSet}" var="menu" itemLabel="#{menu.ubicacion}" itemValue="#{menu.id}"></f:selectItems>
 				</h:selectOneMenu>
+				<h:message for="uiMesa" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
 	
 				<h:outputLabel for="uiCamarero">Camarero:</h:outputLabel>
-				<h:selectOneMenu id="uiCamarero" value="#{cocinaBean.factura.idCamarero}">
+				<h:selectOneMenu id="uiCamarero" value="#{cocinaBean.factura.idCamarero}" required="#{empty param['noValidar']}" requiredMessage="Por favor seleccione el camarero que atendió la mesa">
 					<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
 					<f:selectItems value="#{cocinaBean.camareroSet}" var="camarero" itemLabel="#{camarero.nombre} #{camarero.primerApellido}" itemValue="#{camarero.id}"></f:selectItems>
 				</h:selectOneMenu>
+				<h:message for="uiCamarero" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
 	       	</h:panelGrid>
-	       	<h:panelGrid id="detalle" columns="2">
-	       		<h:dataTable id="dtDetalle" rows="3" value="#{cocinaBean.detalleSet}" var="detalle">
+	       	<h:panelGrid id="detalle" columns="4">
+	       		<h:dataTable id="dtDetalle" value="#{cocinaBean.detalleSet}" var="detalle">
 	       			<f:facet name="header">
 	       				<h:outputText value="Detalle de la factura"></h:outputText>
+	       				<h:commandButton id="btnAdd" value="Adicionar" styleClass="verde" action="#{cocinaBean.adicionarDetalle()}">
+	       					<f:param name="noValidar" value="true" />
+	       				</h:commandButton>
 	       			</f:facet>
+	       			<h:column>
+	       				<h:commandButton id="btnRemove" value="Remover" styleClass="rojo" action="#{cocinaBean.removerDetalle(detalle)}">
+	       					<f:param name="noValidar" value="true" />
+	       				</h:commandButton>
+	       			</h:column>
 	       			<h:column>
 	       				<f:facet name="header">
 	       					<h:outputText value="Cocinero"></h:outputText>
 	       				</f:facet>
 	       				<h:outputLabel for="uiCocinero">Cocinero:</h:outputLabel>
-						<h:selectOneMenu id="uiCocinero" value="#{detalle.idCocinero}">
+						<h:selectOneMenu id="uiCocinero" value="#{detalle.idCocinero}" required="#{empty param['noValidar']}" requiredMessage="Por favor seleccione el cocinero que preparó el plato">
 							<f:selectItem noSelectionOption="true" itemLabel="--Seleccione uno--"></f:selectItem>
 							<f:selectItems value="#{cocinaBean.cocineroSet}" var="cocinero" itemLabel="#{cocinero.nombre} #{cocinero.primerApellido}" itemValue="#{cocinero.id}"></f:selectItems>
 						</h:selectOneMenu>
+						<h:message for="uiCocinero" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
 	       			</h:column>
 	       			<h:column>
 	       				<f:facet name="header">
 	       					<h:outputText value="Plato"></h:outputText>
 	       				</f:facet>
 	       				<h:outputLabel for="uiPlato">Plato:</h:outputLabel>
-	       				<h:inputText id="uiPlato" value="#{detalle.plato}"></h:inputText>
+	       				<h:inputText id="uiPlato" value="#{detalle.plato}" required="#{empty param['noValidar']}" requiredMessage="Por favos dígite el plato consumido"></h:inputText>
+	       				<h:message for="uiPlato" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
        				</h:column>
        				<h:column>
 	       				<f:facet name="header">
 	       					<h:outputText value="Valor"></h:outputText>
 	       				</f:facet>
 	       				<h:outputLabel for="uiValor">Valor:</h:outputLabel>
-	       				<h:inputText id="uiValor" value="#{detalle.importe}"></h:inputText>
+	       				<h:inputText id="uiValor" value="#{detalle.importe}" required="#{empty param['noValidar']}" requiredMessage="Por favor digite el valor del plato"></h:inputText>
+	       				<h:message for="uiValor" errorClass="error" infoClass="ocultar" warnClass="ocultar" fatalClass="ocultar"/>
        				</h:column>
 	       		</h:dataTable>
 	       	</h:panelGrid>

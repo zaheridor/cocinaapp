@@ -52,13 +52,19 @@ public class CocinaBean implements Serializable {
 		//TODO: por el momento solo se puede insertar 3 registros de detalle de factura
 		detalleSet = new ArrayList<>();
 		detalleSet.add(new DetalleFacturaVO());
-		detalleSet.add(new DetalleFacturaVO());
-		detalleSet.add(new DetalleFacturaVO());
 		factura = new FacturaVO();
 		mesaSet = ejb.listadoMesas();
 		clienteSet = ejb.listadoClientes();
 		camareroSet = ejb.listadoCamareros();
 		cocineroSet = ejb.listadoCocineros();
+	}
+	
+	public void adicionarDetalle() {
+		detalleSet.add(new DetalleFacturaVO());
+	}
+	
+	public void removerDetalle(DetalleFacturaVO detalle) {
+		detalleSet.remove(detalle);
 	}
 	
 	public String irCrearFactura() {
