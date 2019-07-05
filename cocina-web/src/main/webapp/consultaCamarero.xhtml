@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h:dataTable id="dtConsulta" rows="3" value="#{sessionScope.consultaCamarero}" var="consulta">
+		<h:dataTable id="dtConsulta" value="#{sessionScope.consultaCamarero}" var="consulta" border="1">
 			<f:facet name="header">
     			<h:outputText value="Listado facturación camareros del mes"></h:outputText>
     		</f:facet>

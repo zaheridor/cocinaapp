@@ -79,7 +79,9 @@
 	       	</h:panelGrid>
        	</h:panelGrid>
        	<h:commandButton id="btnGuardar" value="Guardar Factura" action="#{cocinaBean.guardarFactura()}"/>
-       	<h:commandButton id="btnRegresar" value="Regresar" action="index"/>
+       	<h:commandButton id="btnRegresar" value="Regresar" action="index">
+       		<f:param name="noValidar" value="true" />
+       	</h:commandButton>
 	</h:form>
 </h:body>
 </html>
