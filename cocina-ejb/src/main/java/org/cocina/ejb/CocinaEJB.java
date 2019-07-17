@@ -204,7 +204,7 @@ public class CocinaEJB implements CocinaEJBRemote, CocinaEJBLocal {
 		query.multiselect(cliente.get(Cliente_.id), cliente.get(Cliente_.nombre), cliente.get(Cliente_.primerApellido), builder.sum(detalleJoin.get(DetalleFactura_.importe)));
 		query.groupBy(cliente.get(Cliente_.id), cliente.get(Cliente_.nombre), cliente.get(Cliente_.primerApellido));
 		query.having(builder.gt(builder.sum(detalleJoin.get(DetalleFactura_.importe)), valorMinimoGastado));
-		query.orderBy(builder.asc(detalleJoin.get(DetalleFactura_.importe)));
+		query.orderBy(builder.asc(builder.sum(detalleJoin.get(DetalleFactura_.importe))));
 		
 		TypedQuery<Object[]> tipo = em.createQuery(query);
 		return tipo.getResultList();
