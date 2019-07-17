@@ -5,9 +5,9 @@
     <class>org.cocina.dao.jpa.Camarero</class>
 	<class>org.cocina.dao.jpa.Cliente</class>
 	<class>org.cocina.dao.jpa.Cocinero</class>
+	<class>org.cocina.dao.jpa.Mesa</class>
 	<class>org.cocina.dao.jpa.DetalleFactura</class>
 	<class>org.cocina.dao.jpa.Factura</class>
-	<class>org.cocina.dao.jpa.Mesa</class>
     <properties/>
   </persistence-unit>
 </persistence>

@@ -3,13 +3,12 @@ package org.cocina.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ConsultaCamareroDTO {
+public class ConsultaBaseDTO {
 
 	private Integer id;
 	private String nombre;
 	private String apellido;
 	private String mes;
-	private Date fechaFactura;
 	private BigDecimal sumatoriaImporte;
 	
 	public Integer getId() {
@@ -20,9 +19,6 @@ public class ConsultaCamareroDTO {
 	}
 	public String getApellido() {
 		return apellido;
-	}
-	public Date getFechaFactura() {
-		return fechaFactura;
 	}
 	public BigDecimal getSumatoriaImporte() {
 		return sumatoriaImporte;
@@ -37,7 +33,6 @@ public class ConsultaCamareroDTO {
 		private String nombre;
 		private String apellido;
 		private String mes;
-		private Date fechaFactura;
 		private BigDecimal sumatoriaImporte;
 		
 		public Builder(Integer id) {
@@ -59,27 +54,21 @@ public class ConsultaCamareroDTO {
 			return this;
 		}
 		
-		public Builder fechaFactura(Date fechaFactura) {
-			this.fechaFactura = fechaFactura;
-			return this;
-		}
-		
 		public Builder sumatoriaImporte(BigDecimal sumatoriaImporte) {
 			this.sumatoriaImporte = sumatoriaImporte;
 			return this;
 		}
 		
-		public ConsultaCamareroDTO build() {
-			return new ConsultaCamareroDTO(this);
+		public ConsultaBaseDTO build() {
+			return new ConsultaBaseDTO(this);
 		}
 	}
 	
-	private ConsultaCamareroDTO(Builder b) {
+	private ConsultaBaseDTO(Builder b) {
 		this.id = b.id;
 		this.nombre = b.nombre;
 		this.apellido = b.apellido;
 		this.mes = b.mes;
-		this.fechaFactura = b.fechaFactura;
 		this.sumatoriaImporte = b.sumatoriaImporte;
 	}
 }

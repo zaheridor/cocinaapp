@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consulta Clientes</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:dataTable id="dtConsulta" value="#{sessionScope.consultaCliente}" var="consulta" border="1">
+			<f:facet name="header">
+    			<h:outputText value="Listado clientes que han gastado más de $10.000"></h:outputText>
+    		</f:facet>
+    		<h:column>
+    			<f:facet name="header">
+     				<h:outputText value="Nombre"></h:outputText>
+     			</f:facet>
+     			<h:outputText value="#{consulta.nombre}"></h:outputText>
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+     				<h:outputText value="Apellido"></h:outputText>
+     			</f:facet>
+     			<h:outputText value="#{consulta.apellido}"></h:outputText>
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+     				<h:outputText value="Valor"></h:outputText>
+     			</f:facet>
+     			<h:outputText value="#{consulta.sumatoriaImporte}">
+     				<f:convertNumber currencySymbol = "$" type = "currency" />
+     			</h:outputText>
+    		</h:column>
+		</h:dataTable>
+       	<h:commandButton id="btnRegresar" value="Regresar" action="index"/>
+	</h:form>
+</h:body>
+</html>

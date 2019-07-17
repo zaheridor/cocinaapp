@@ -1,6 +1,7 @@
 package org.cocina.web;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,12 +72,19 @@ public class CocinaBean implements Serializable {
 		return "crearFactura";
 	}
 	
+	public String consultaCliente() {
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		session.put("consultaCliente", ejb.consultarClientesPorGastosMayoresA(new BigDecimal(10_000)));
+		
+		return "consultaCliente";
+	}
+	
 	public String consultaCamarero() {
 		LocalDate fechaInicial = LocalDate.now().withDayOfMonth(1);
 		LocalDate fechaFinal = LocalDate.now().withDayOfMonth(fechaInicial.lengthOfMonth());
 		
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		session.put("consultaCamarero", ejb.consultaCamareroRangoFechas(fechaInicial, fechaFinal));
+		session.put("consultaCamarero", ejb.consultarCamarerosPorRangoFecha(fechaInicial, fechaFinal));
 
 		return "consultaCamarero";
 	}
