@@ -1,6 +1,6 @@
 package org.cocina.dto;
 
-import org.cocina.dao.jpa.Cocinero;
+import org.cocina.dao.jpa.entity.Cocinero;
 
 /**
  * Clase encargada de manejar la información de negocio de un cocinero.

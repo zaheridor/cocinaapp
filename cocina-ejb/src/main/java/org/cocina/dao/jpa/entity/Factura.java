@@ -1,4 +1,4 @@
-package org.cocina.dao.jpa;
+package org.cocina.dao.jpa.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * Clase base generada con Eclipse.
+ * Entidad factura.
  * @author zaheridor
  *
  */

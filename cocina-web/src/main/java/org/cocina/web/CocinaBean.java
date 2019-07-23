@@ -26,7 +26,7 @@ import org.cocina.web.vo.DetalleFacturaVO;
 import org.cocina.web.vo.FacturaVO;
 
 /**
- * Debido a un error en Glassfish 5, se deben dejar las anotaciones @ApplicationScoped y @FacesConfig.
+ * Controlador encargado de procesar las peticiones del front y comunicarse con la lògica de negocio.
  * @author zaheridor
  *
  */
@@ -50,35 +50,54 @@ public class CocinaBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		//TODO: por el momento solo se puede insertar 3 registros de detalle de factura
 		detalleSet = new ArrayList<>();
 		detalleSet.add(new DetalleFacturaVO());
 		factura = new FacturaVO();
+	}
+
+	/**
+	 * Permite agregar registros al detalle de la factura.
+	 */
+	public void adicionarDetalle() {
+		detalleSet.add(new DetalleFacturaVO());
+	}
+
+	/**
+	 * Permite remover registros de un detalle de la factura.
+	 * @param detalle
+	 */
+	public void removerDetalle(DetalleFacturaVO detalle) {
+		detalleSet.remove(detalle);
+	}
+
+	/**
+	 * Método inicial para crear una factura.
+	 * @return
+	 */
+	public String irCrearFactura() {
 		mesaSet = ejb.listadoMesas();
 		clienteSet = ejb.listadoClientes();
 		camareroSet = ejb.listadoCamareros();
 		cocineroSet = ejb.listadoCocineros();
-	}
-	
-	public void adicionarDetalle() {
-		detalleSet.add(new DetalleFacturaVO());
-	}
-	
-	public void removerDetalle(DetalleFacturaVO detalle) {
-		detalleSet.remove(detalle);
-	}
-	
-	public String irCrearFactura() {
+
 		return "crearFactura";
 	}
-	
+
+	/**
+	 * Método inicial para la consulta de clientes.
+	 * @return
+	 */
 	public String consultaCliente() {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("consultaCliente", ejb.consultarClientesPorGastosMayoresA(new BigDecimal(10_000)));
 		
 		return "consultaCliente";
 	}
-	
+
+	/**
+	 * Método inicial para la consulta de camareros.
+	 * @return
+	 */
 	public String consultaCamarero() {
 		LocalDate fechaInicial = LocalDate.now().withDayOfMonth(1);
 		LocalDate fechaFinal = LocalDate.now().withDayOfMonth(fechaInicial.lengthOfMonth());
@@ -88,7 +107,11 @@ public class CocinaBean implements Serializable {
 
 		return "consultaCamarero";
 	}
-	
+
+	/**
+	 * Procesa la acción de guardar una factura diligenciada por el cliente.
+	 * @return
+	 */
 	public String guardarFactura() {
 		FacturaDTO.Builder builder = new FacturaDTO.Builder().cliente(factura.getIdCliente()).mesa(factura.getIdMesa()).camarero(factura.getIdCamarero()).fechaFactura(new Date());
 		
@@ -101,7 +124,6 @@ public class CocinaBean implements Serializable {
 		try {
 			ejb.guardarFactura(factura);
 		} catch (GeneralException ex) {
-			//TODO: guardar excepcion en log.
 			return "error";
 		}
 		

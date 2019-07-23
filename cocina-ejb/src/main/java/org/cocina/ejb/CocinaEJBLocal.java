@@ -14,21 +14,24 @@ import org.cocina.dto.FacturaDTO;
 import org.cocina.dto.MesaDTO;
 import org.cocina.excepciones.GeneralException;
 
+/**
+ * Contrato de las acciones soportadas por la lógica de negocio.
+ */
 @Local
 public interface CocinaEJBLocal {
 
-	public void guardarFactura(FacturaDTO factura) throws GeneralException;
+	void guardarFactura(FacturaDTO factura) throws GeneralException;
 	
-	public List<MesaDTO> listadoMesas();
+	List<MesaDTO> listadoMesas();
 	
-	public List<ClienteDTO> listadoClientes();
+	List<ClienteDTO> listadoClientes();
 	
-	public List<CamareroDTO> listadoCamareros();
+	List<CamareroDTO> listadoCamareros();
 	
-	public List<CocineroDTO> listadoCocineros();
+	List<CocineroDTO> listadoCocineros();
 	
-	public List<ConsultaBaseDTO> consultarCamarerosPorRangoFecha(LocalDate fechaInicial, LocalDate fechaFinal);
+	List<ConsultaBaseDTO> consultarCamarerosPorRangoFecha(LocalDate fechaInicial, LocalDate fechaFinal);
 	
-	public List<ConsultaBaseDTO> consultarClientesPorGastosMayoresA(BigDecimal valorMinimoGastado);
+	List<ConsultaBaseDTO> consultarClientesPorGastosMayoresA(BigDecimal valorMinimoGastado);
 	
 }

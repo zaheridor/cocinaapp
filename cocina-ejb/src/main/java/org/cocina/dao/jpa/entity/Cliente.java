@@ -1,4 +1,4 @@
-package org.cocina.dao.jpa;
+package org.cocina.dao.jpa.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * Clase base generada con Eclipse.
+ * Entidad cliente.
  * @author zaheridor
  *
  */

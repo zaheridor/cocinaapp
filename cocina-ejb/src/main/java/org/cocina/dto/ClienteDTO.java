@@ -1,6 +1,6 @@
 package org.cocina.dto;
 
-import org.cocina.dao.jpa.Cliente;
+import org.cocina.dao.jpa.entity.Cliente;
 
 /**
  * Clase encargada de manejar la información de negocio de un cliente.

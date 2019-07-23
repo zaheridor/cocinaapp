@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a8ea7781-8d76-42bd-880b-34e43a8e5911" name="Default Changelist" comment="Adoptar patrón DAO para JPA y refactorización de código.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_ear_ear.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_ear_ear_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_ejb_ejb.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_ejb_ejb_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_web_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cocina_web_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_api_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_web_api_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ear/cocina-ear.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/cocina-ejb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CamareroDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/ClienteDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocineroDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CommonDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/DetalleFacturaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/FacturaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/MesaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCamareroDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaClienteDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCocineroDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDetalleFacturaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaFacturaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaMesaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/enumerado/UnidadPersistenciaEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocina-web/cocina-web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cocinaapp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/Camarero.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Camarero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/Cocinero.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cocinero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/DetalleFactura.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/DetalleFactura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Factura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Mesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CamareroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CamareroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ClienteDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ClienteDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CocineroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CocineroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ConsultaBaseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ConsultaBaseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/DetalleFacturaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/DetalleFacturaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/FacturaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/FacturaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/MesaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/MesaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJB.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJBLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJBLocal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/excepciones/GeneralException.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/excepciones/GeneralException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/util/Utilitario.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/util/Utilitario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-ejb/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-ejb/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/CocinaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/CocinaBean.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cocina-ear/bin/" />
+    <ignored path="$PROJECT_DIR$/bin/" />
+    <ignored path="$PROJECT_DIR$/cocina-ear/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/cocina-web/target/" />
+    <ignored path="$PROJECT_DIR$/cocina-ejb/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCamareroDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CamareroDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="159" column="17" lean-forward="true" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Mesa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ConsultaBaseDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-470">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/util/Utilitario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-web/src/main/webapp/consultaCamarero.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-180" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/resources/META-INF/persistence.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Camarero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>em</find>
+      <find>MODULE_DIR</find>
+      <find>PROJECT_DI</find>
+      <find>ResultadoFacturadoCamareroAlMes</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/CommonJPADAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocinaDAOLocal.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CommonJPADAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocinaDAOFactory.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaDao.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocinaDAOImpl.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocinaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaCocinaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaClienteDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaCocineroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaDetalleFacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaFacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaMesaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/CocinaBean.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJBLocal.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ConsultaBaseDTO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/org/cocina/dao/jpa/entity/Camarero.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/JpaCamareroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/util/Utilitario.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/excepciones/GeneralException.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/ClienteDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CamareroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocineroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/DetalleFacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/FacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/MesaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CommonDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Camarero.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cliente.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cocinero.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/DetalleFactura.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Factura.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Mesa.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/enumerado/UnidadPersistenciaEnum.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaClienteDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCamareroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCocineroDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDetalleFacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaFacturaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaMesaDAO.java" />
+        <option value="$PROJECT_DIR$/cocina-ejb/pom.xml" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJB.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="cocinaapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="cocinaapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="27" />
+    <option name="width" value="1440" />
+    <option name="height" value="825" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="jpa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="jpa" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-ejb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina" type="462c0819:PsiDirectoryNode" />
+              <item name="ejb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocinaapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cocinaapp" type="462c0819:PsiDirectoryNode" />
+              <item name="cocina-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563850706340" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.cocina.dao.jpa" />
+      <recent name="org.cocina.dao" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Remote">
+      <module name="cocina-ejb" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="9009" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8ea7781-8d76-42bd-880b-34e43a8e5911" name="Default Changelist" comment="" />
+      <created>1563497561400</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1563497561400</updated>
+      <workItem from="1563497572821" duration="15879000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15879000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1440" height="825" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Persistence" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Web" side_tool="true" />
+      <window_info id="EJB" side_tool="true" />
+      <window_info id="Learn" />
+      <window_info id="JavaEE:App" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.24964234" />
+      <window_info id="Structure" order="1" sideWeight="0.5020325" side_tool="true" visible="true" weight="0.24964234" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3287858" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.3287858" />
+      <window_info anchor="bottom" id="Java Enterprise" weight="0.3287858" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" weight="0.3287858" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3287858" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3287858" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3287858" />
+      <window_info anchor="right" id="Maven" weight="0.3297568" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="JSF" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="CDI" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adoptar patrón DAO para JPA y refactorización de código." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adoptar patrón DAO para JPA y refactorización de código." />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocinaDAOLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/vo/DetalleFacturaVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/vo/FacturaVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-web/src/main/java/org/cocina/web/CocinaBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-455">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+          <folding>
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
+            <element signature="e#1787#1788#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#3596#3597#0" expanded="true" />
+            <element signature="e#3646#3647#0" expanded="true" />
+            <element signature="e#3675#3676#0" expanded="true" />
+            <element signature="e#3719#3720#0" expanded="true" />
+            <element signature="e#3743#3744#0" expanded="true" />
+            <element signature="e#3802#3803#0" expanded="true" />
+            <element signature="e#3837#3838#0" expanded="true" />
+            <element signature="e#3883#3884#0" expanded="true" />
+            <element signature="e#3908#3909#0" expanded="true" />
+            <element signature="e#3970#3971#0" expanded="true" />
+            <element signature="e#4007#4008#0" expanded="true" />
+            <element signature="e#4053#4054#0" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
+            <element signature="e#4140#4141#0" expanded="true" />
+            <element signature="e#4177#4178#0" expanded="true" />
+            <element signature="e#4211#4212#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4278#4279#0" expanded="true" />
+            <element signature="e#4307#4308#0" expanded="true" />
+            <element signature="e#4357#4358#0" expanded="true" />
+            <element signature="e#4381#4382#0" expanded="true" />
+            <element signature="e#4446#4447#0" expanded="true" />
+            <element signature="e#4481#4482#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJBRemote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJBLocal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CamareroDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ClienteDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/CocineroDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/DetalleFacturaDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/FacturaDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/MesaDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/excepciones/GeneralException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding>
+            <element signature="e#174#175#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/ClienteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="81" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CocineroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="81" selection-start-line="5" selection-start-column="81" selection-end-line="5" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/DetalleFacturaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="91" selection-start-line="5" selection-start-column="91" selection-end-line="5" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/FacturaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/MesaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="77" selection-start-line="5" selection-start-column="77" selection-end-line="5" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Cocinero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/DetalleFactura.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Factura.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/enumerado/UnidadPersistenciaEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="34" />
+          <folding>
+            <element signature="e#149#150#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#158#159#0" expanded="true" />
+            <element signature="e#187#188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CommonDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="105" selection-start-line="5" selection-start-column="105" selection-end-line="5" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/cocina-ejb.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1490" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1566">
+          <caret line="273" column="19" lean-forward="true" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocinaapp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaClienteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCocineroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="48" column="82" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaDetalleFacturaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaFacturaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaMesaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/JpaCamareroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/CamareroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Camarero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/util/Utilitario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dto/ConsultaBaseDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-470">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-web/src/main/webapp/consultaCamarero.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/ejb/CocinaEJB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="159" column="17" lean-forward="true" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cocina-ejb/src/main/java/org/cocina/dao/jpa/entity/Mesa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

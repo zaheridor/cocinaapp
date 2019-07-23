@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.cocina.dao.jpa.Camarero;
-import org.cocina.dao.jpa.Cliente;
-import org.cocina.dao.jpa.Factura;
-import org.cocina.dao.jpa.Mesa;
+import org.cocina.dao.jpa.entity.Camarero;
+import org.cocina.dao.jpa.entity.Cliente;
+import org.cocina.dao.jpa.entity.Factura;
+import org.cocina.dao.jpa.entity.Mesa;
 
 /**
  * Clase encargada de manejar la información de negocio de factura.

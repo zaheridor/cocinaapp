@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cocina-ear" />
+        <module name="cocina-ejb" />
+        <module name="cocina-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cocina-ear" target="1.8" />
+      <module name="cocina-ejb" target="1.8" />
+      <module name="cocina-web" target="1.8" />
+      <module name="cocinaapp" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cocina-ejb" options="-endorseddirs $PROJECT_DIR$/cocina-ejb/target/endorsed" />
+      <module name="cocina-web" options="-endorseddirs $PROJECT_DIR$/cocina-web/target/endorsed" />
+    </option>
+  </component>
+</project>

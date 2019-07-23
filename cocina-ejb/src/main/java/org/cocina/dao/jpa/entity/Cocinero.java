@@ -1,51 +1,24 @@
-package org.cocina.dao.jpa;
+package org.cocina.dao.jpa.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.ColumnResult;
-import javax.persistence.Entity;
-import javax.persistence.EntityResult;
-import javax.persistence.FieldResult;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.SqlResultSetMapping;
-import javax.persistence.Table;
 
 
 /**
- * Clase base generada con Eclipse.
+ * Entidad cocinero.
  * @author zaheridor
  *
  */
-@SqlResultSetMapping(name = "ResultadoFacturadoCamareroAlMes",
-				  	 entities = {
-				  			 @EntityResult(
-						  			entityClass = org.cocina.dao.jpa.Camarero.class,
-						  			fields = {
-										@FieldResult(name="id", column="id_camarero"),
-										@FieldResult(name="nombre", column="nombre"),
-										@FieldResult(name="primer_apellido", column="apellido")
-						  			}
-				  			)
-				  	},
-				  	columns = @ColumnResult(name="sumatoriaImporte", type = BigDecimal.class)
-)
 @Entity
-@Table(name="camarero")
-@NamedQuery(name="Camarero.findAll", query="SELECT c FROM Camarero c")
-public class Camarero implements Serializable {
+@Table(name="cocinero")
+@NamedQuery(name="Cocinero.findAll", query="SELECT c FROM Cocinero c")
+public class Cocinero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="camarero_id_generator", sequenceName="camarero_id_seq", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="camarero_id_generator")
+	@SequenceGenerator(name="cocinero_id_generator", sequenceName="cocinero_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cocinero_id_generator")
 	@Column(name="id")
 	private Integer id;
 
@@ -58,17 +31,11 @@ public class Camarero implements Serializable {
 	@Column(name="segundo_apellido")
 	private String segundoApellido;
 
-	//bi-directional many-to-one association to Factura
-	@OneToMany(mappedBy="camarero")
-	private List<Factura> facturas;
+	//bi-directional many-to-one association to DetalleFactura
+	@OneToMany(mappedBy="cocinero")
+	private List<DetalleFactura> detalleFacturas;
 
-	public Camarero() {
-	}
-	
-	public Camarero(Integer id, String nombre, String primerApellido) {
-		this.id = id;
-		this.nombre = nombre;
-		this.primerApellido = primerApellido;
+	public Cocinero() {
 	}
 
 	public Integer getId() {
@@ -103,19 +70,19 @@ public class Camarero implements Serializable {
 		this.segundoApellido = segundoApellido;
 	}
 
-	public List<Factura> getFacturas() {
-		return this.facturas;
+	public List<DetalleFactura> getDetalleFacturas() {
+		return this.detalleFacturas;
 	}
 
-	public void setFacturas(List<Factura> facturas) {
-		this.facturas = facturas;
+	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
+		this.detalleFacturas = detalleFacturas;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((facturas == null) ? 0 : facturas.hashCode());
+		result = prime * result + ((detalleFacturas == null) ? 0 : detalleFacturas.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((primerApellido == null) ? 0 : primerApellido.hashCode());
@@ -131,11 +98,11 @@ public class Camarero implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Camarero other = (Camarero) obj;
-		if (facturas == null) {
-			if (other.facturas != null)
+		Cocinero other = (Cocinero) obj;
+		if (detalleFacturas == null) {
+			if (other.detalleFacturas != null)
 				return false;
-		} else if (!facturas.equals(other.facturas))
+		} else if (!detalleFacturas.equals(other.detalleFacturas))
 			return false;
 		if (id == null) {
 			if (other.id != null)

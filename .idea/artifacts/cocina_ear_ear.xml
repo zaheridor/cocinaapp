@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="cocina-ear:ear">
+    <output-path>$PROJECT_DIR$/cocina-ear/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cocina-ear</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cocina-ear-0.0.1-SNAPSHOT.ear">
+      <element id="artifact" artifact-name="cocina-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

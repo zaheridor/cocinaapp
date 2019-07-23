@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cocina-ear/cocina-ear.iml" filepath="$PROJECT_DIR$/cocina-ear/cocina-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cocina-ejb/cocina-ejb.iml" filepath="$PROJECT_DIR$/cocina-ejb/cocina-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cocina-web/cocina-web.iml" filepath="$PROJECT_DIR$/cocina-web/cocina-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cocinaapp.iml" filepath="$PROJECT_DIR$/cocinaapp.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,5 +1,8 @@
 package org.cocina.util;
 
+/**
+ * Clase con métodos generales para las diversas clases en la lógica de negocio.
+ */
 public class Utilitario {
 
 	@Deprecated

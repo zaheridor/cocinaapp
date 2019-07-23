@@ -2,9 +2,9 @@ package org.cocina.dto;
 
 import java.math.BigDecimal;
 
-import org.cocina.dao.jpa.Cocinero;
-import org.cocina.dao.jpa.DetalleFactura;
-import org.cocina.dao.jpa.Factura;
+import org.cocina.dao.jpa.entity.Cocinero;
+import org.cocina.dao.jpa.entity.DetalleFactura;
+import org.cocina.dao.jpa.entity.Factura;
 
 /**
  * Clase encargada de manejar la información de negocio del detalle de factura.

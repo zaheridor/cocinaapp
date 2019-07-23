@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cocina-web:war">
+    <output-path>$PROJECT_DIR$/cocina-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cocina-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cocina-web-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="cocina-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,6 +1,6 @@
 package org.cocina.dto;
 
-import org.cocina.dao.jpa.Mesa;
+import org.cocina.dao.jpa.entity.Mesa;
 
 /**
  * Clase encargada de manejar la información de negocio de una mesa atendida.

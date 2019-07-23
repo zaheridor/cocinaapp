@@ -1,4 +1,4 @@
-package org.cocina.dao.jpa;
+package org.cocina.dao.jpa.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 
 /**
- * Clase base generada con Eclipse.
+ * Entidad detalle de factura.
  * @author zaheridor
  *
  */

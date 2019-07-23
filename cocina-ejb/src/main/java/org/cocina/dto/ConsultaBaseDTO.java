@@ -3,6 +3,9 @@ package org.cocina.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Objeto base para almacenar información de las consultas entre varios dominios de datos.
+ */
 public class ConsultaBaseDTO {
 
 	private Integer id;

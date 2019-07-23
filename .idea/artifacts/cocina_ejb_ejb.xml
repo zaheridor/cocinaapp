@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="cocina-ejb:ejb">
+    <output-path>$PROJECT_DIR$/cocina-ejb/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cocina-ejb</module>
+        <packaging>ejb</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cocina-ejb-0.0.1-SNAPSHOT.jar">
+      <element id="artifact" artifact-name="cocina-ejb:ejb exploded" />
+    </root>
+  </artifact>
+</component>

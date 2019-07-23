@@ -1,6 +1,6 @@
 package org.cocina.dto;
 
-import org.cocina.dao.jpa.Camarero;
+import org.cocina.dao.jpa.entity.Camarero;
 
 /**
  * Clase encargada de manejar la información de negocio de un camarero.
